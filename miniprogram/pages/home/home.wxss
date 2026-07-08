@@ -1,0 +1,47 @@
+/* 首页样式 */
+.home { padding: 0 28rpx 60rpx; }
+
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 24rpx 0 16rpx; }
+.brand { display: flex; align-items: center; gap: 12rpx; }
+.brand-icon { font-size: 44rpx; }
+.brand-name { font-size: 40rpx; font-weight: 700; color: var(--primary); }
+.topbar-action { padding: 8rpx 16rpx; }
+.topbar-avatar { font-size: 40rpx; }
+
+/* 轮播 */
+.banner { height: 280rpx; border-radius: 24rpx; overflow: hidden; margin-bottom: 32rpx; }
+.banner-slide { height: 100%; display: flex; align-items: center; padding: 0 48rpx; }
+.slide-1 { background: linear-gradient(135deg, #6B1D5E, #8B3A7C); }
+.slide-2 { background: linear-gradient(135deg, #4A1040, #6B1D5E); }
+.slide-3 { background: linear-gradient(135deg, #8B3A7C, #B06AA0); }
+.banner-content { display: flex; flex-direction: column; }
+.banner-title { color: #fff; font-size: 44rpx; font-weight: 700; }
+.banner-sub { color: rgba(255,255,255,0.85); font-size: 26rpx; margin-top: 12rpx; }
+
+/* 功能入口 */
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24rpx; margin-bottom: 32rpx; }
+.feature-card {
+  background: #fff; border-radius: 24rpx; padding: 36rpx 24rpx;
+  display: flex; flex-direction: column; align-items: center;
+  box-shadow: 0 4rpx 16rpx rgba(107,29,94,0.06);
+}
+.feature-icon { font-size: 64rpx; margin-bottom: 16rpx; }
+.feature-name { font-size: 32rpx; font-weight: 600; color: var(--text-primary); }
+.feature-desc { font-size: 24rpx; color: var(--text-secondary); margin-top: 8rpx; }
+
+/* 快捷操作 */
+.quick-actions { display: flex; flex-direction: column; gap: 20rpx; }
+.quick-action-item {
+  display: flex; align-items: center; gap: 16rpx;
+  padding: 24rpx; background: var(--primary-lighter);
+  border-radius: 16rpx; font-size: 30rpx; color: var(--text-primary);
+}
+.qa-icon { font-size: 36rpx; }
+
+/* 温馨提示 */
+.tips-card {
+  display: flex; gap: 16rpx; padding: 28rpx;
+  background: #FFF9E6; border-radius: 20rpx; margin-top: 24rpx;
+}
+.tips-icon { font-size: 40rpx; }
+.tips-content { display: flex; flex-direction: column; gap: 6rpx; font-size: 26rpx; color: var(--text-secondary); line-height: 1.6; }

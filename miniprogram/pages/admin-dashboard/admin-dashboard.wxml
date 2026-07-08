@@ -1,0 +1,111 @@
+<!-- 管理员后台页 -->
+<view class="page-wrap">
+  <!-- 统计卡片 -->
+  <view class="stat-grid">
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalUsers}}</view>
+      <view class="stat-label">注册用户</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalChildren}}</view>
+      <view class="stat-label">建档儿童</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-num">{{stats.totalScreenings}}</view>
+      <view class="stat-label">筛查次数</view>
+    </view>
+    <view class="stat-card highlight">
+      <view class="stat-num">{{stats.riskDistribution.high}}</view>
+      <view class="stat-label">高风险数</view>
+    </view>
+  </view>
+
+  <!-- 风险分布图 -->
+  <view class="card">
+    <view class="card-title">📊 风险等级分布</view>
+    <view class="chart-row">
+      <text class="chart-label">高风险</text>
+      <view class="chart-bar-wrap"><view class="chart-bar bar-danger" style="width: {{barHigh}}%"></view></view>
+      <text class="chart-val">{{stats.riskDistribution.high}}</text>
+    </view>
+    <view class="chart-row">
+      <text class="chart-label">中风险</text>
+      <view class="chart-bar-wrap"><view class="chart-bar bar-warning" style="width: {{barMedium}}%"></view></view>
+      <text class="chart-val">{{stats.riskDistribution.medium}}</text>
+    </view>
+    <view class="chart-row">
+      <text class="chart-label">低风险</text>
+      <view class="chart-bar-wrap"><view class="chart-bar bar-safe" style="width: {{barLow}}%"></view></view>
+      <text class="chart-val">{{stats.riskDistribution.low}}</text>
+    </view>
+  </view>
+
+  <!-- 年龄段分布 -->
+  <view class="card" wx:if="{{stats.ageDistribution && stats.ageDistribution.length}}">
+    <view class="card-title">👶 年龄段分布</view>
+    <view class="chart-row" wx:for="{{stats.ageDistribution}}" wx:key="label">
+      <text class="chart-label">{{item.label}}</text>
+      <view class="chart-bar-wrap"><view class="chart-bar bar-primary" style="width: {{item.percent}}%"></view></view>
+      <text class="chart-val">{{item.count}}</text>
+    </view>
+  </view>
+
+  <!-- 标签切换 -->
+  <view class="tabs">
+    <view class="tab {{tab === 'users' ? 'active' : ''}}" bindtap="switchTab" data-tab="users">用户列表</view>
+    <view class="tab {{tab === 'children' ? 'active' : ''}}" bindtap="switchTab" data-tab="children">儿童列表</view>
+    <view class="tab {{tab === 'records' ? 'active' : ''}}" bindtap="switchTab" data-tab="records">筛查记录</view>
+  </view>
+
+  <!-- 数据表 -->
+  <view class="data-table" wx:if="{{tab === 'users'}}">
+    <view class="dt-row dt-head">
+      <text class="flex1">电话</text>
+      <text class="flex1">注册时间</text>
+      <text class="flex05">儿童</text>
+      <text class="flex05">记录</text>
+    </view>
+    <view class="dt-row" wx:for="{{users}}" wx:key="id">
+      <text class="flex1">{{item.phone}}</text>
+      <text class="flex1">{{item.createTimeText}}</text>
+      <text class="flex05">{{item.childCount}}</text>
+      <text class="flex05">{{item.recordCount}}</text>
+    </view>
+    <view class="dt-empty" wx:if="{{users.length === 0}}">暂无用户数据</view>
+  </view>
+
+  <view class="data-table" wx:if="{{tab === 'children'}}">
+    <view class="dt-row dt-head">
+      <text class="flex15">昵称</text>
+      <text class="flex08">性别</text>
+      <text class="flex12">年龄</text>
+      <text class="flex1">筛查次数</text>
+    </view>
+    <view class="dt-row" wx:for="{{children}}" wx:key="id">
+      <text class="flex15">{{item.avatar || '👶'}} {{item.name}}</text>
+      <text class="flex08">{{item.gender === 'male' ? '男' : '女'}}</text>
+      <text class="flex12">{{item.ageText}}</text>
+      <text class="flex1">{{item.recordCount}}</text>
+    </view>
+    <view class="dt-empty" wx:if="{{children.length === 0}}">暂无儿童数据</view>
+  </view>
+
+  <view class="data-table" wx:if="{{tab === 'records'}}">
+    <view class="dt-row dt-head">
+      <text class="flex12">儿童</text>
+      <text class="flex08">风险</text>
+      <text class="flex06">得分</text>
+      <text class="flex12">时间</text>
+    </view>
+    <view class="dt-row" wx:for="{{records}}" wx:key="id" bindtap="viewRecord" data-id="{{item.id}}">
+      <text class="flex12">{{item.childAvatar || '👶'}} {{item.childName}}</text>
+      <text class="flex08"><text class="risk-badge {{item.riskLevel}}">{{item.riskText}}</text></text>
+      <text class="flex06">{{item.totalScore}}</text>
+      <text class="flex12">{{item.createTimeText}}</text>
+    </view>
+    <view class="dt-empty" wx:if="{{records.length === 0}}">暂无筛查记录</view>
+  </view>
+
+  <button class="btn btn-outline btn-block mt-10" bindtap="exportData">📥 导出数据 (CSV)</button>
+  <button class="btn btn-outline btn-block mt-10" bindtap="doLogout">退出管理后台</button>
+</view>

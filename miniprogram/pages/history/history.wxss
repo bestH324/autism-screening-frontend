@@ -1,0 +1,8 @@
+/* 历史记录页 */
+.history-list { display: flex; flex-direction: column; gap: 20rpx; }
+.history-item { background: #fff; border-radius: 20rpx; padding: 28rpx; box-shadow: 0 4rpx 16rpx rgba(107,29,94,0.06); }
+.hi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16rpx; }
+.hi-child { font-size: 30rpx; font-weight: 600; }
+.hi-date { font-size: 24rpx; color: var(--text-hint); }
+.hi-footer { display: flex; justify-content: space-between; align-items: center; }
+.hi-score { font-size: 26rpx; color: var(--text-secondary); }

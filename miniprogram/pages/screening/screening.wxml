@@ -1,0 +1,66 @@
+<!-- 筛查页 -->
+<view class="page-wrap">
+  <!-- 筛查前选择儿童 -->
+  <block wx:if="{{!started}}">
+    <view class="info-card">
+      <view class="info-title">📋 筛查须知</view>
+      <view class="info-list">
+        <text>· 本筛查采用SACS改编量表，适用于 <text class="bold">1-5岁</text> 儿童</text>
+        <text>· 共 <text class="bold">{{total}}道题</text>，每道题前有一段示范视频</text>
+        <text>· 请仔细观看视频后，根据 <text class="bold">宝宝日常表现</text> 作答</text>
+        <text>· 预计用时 <text class="bold">10-15分钟</text></text>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">选择筛查宝宝</text>
+      <picker wx:if="{{children.length > 0}}" mode="selector" range="{{childrenRange}}" value="{{childIndex}}" bindchange="onChildChange">
+        <view class="form-input picker-display">{{childrenRange[childIndex] || '请选择宝宝'}}</view>
+      </picker>
+      <view wx:else class="form-input picker-display disabled">-- 请先添加宝宝信息 --</view>
+    </view>
+
+    <button class="btn btn-primary btn-block" bindtap="startScreening">开始筛查</button>
+    <button wx:if="{{children.length === 0}}" class="btn btn-outline btn-block mt-10" bindtap="goChildManage">去添加宝宝</button>
+  </block>
+
+  <!-- 筛查中 -->
+  <block wx:if="{{started}}">
+    <!-- 进度条 -->
+    <view class="progress-bar-container">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+      <text class="progress-text">{{answeredCount}}/{{total}}</text>
+    </view>
+
+    <!-- 视频区域 -->
+    <view class="video-container">
+      <video wx:if="{{currentVideo}}" class="screening-video" src="{{currentVideo}}" controls show-center-play-btn show-play-btn object-fit="contain" />
+      <view class="video-tip">🎬 第 {{currentNum}} 题示范视频</view>
+    </view>
+
+    <!-- 题目区域 -->
+    <view class="question-card">
+      <view class="question-number">第 {{currentNum}} 题</view>
+      <view class="question-text">{{currentQuestion.content}}</view>
+      <view class="question-options">
+        <view class="question-option {{answeredMap[currentQuestion.id] === opt.value ? 'selected' : ''}}"
+              wx:for="{{currentQuestion.options}}" wx:for-item="opt" wx:key="value"
+              bindtap="selectAnswer" data-qid="{{currentQuestion.id}}" data-value="{{opt.value}}">
+          <view class="option-dot">{{answeredMap[currentQuestion.id] === opt.value ? '✓' : ''}}</view>
+          <text>{{opt.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 导航按钮 -->
+    <view class="question-nav">
+      <button class="btn btn-outline" bindtap="prevQuestion" disabled="{{currentIndex === 0}}">上一题</button>
+      <button wx:if="{{currentIndex < total - 1}}" class="btn btn-primary" bindtap="nextQuestion">下一题</button>
+    </view>
+    <button wx:if="{{currentIndex >= total - 1}}" class="btn btn-primary btn-block mt-10" bindtap="submitScreening" loading="{{submitting}}" disabled="{{!allAnswered}}">
+      {{allAnswered ? '提交筛查' : '请回答所有题目后再提交'}}
+    </button>
+  </block>
+</view>

@@ -1,0 +1,36 @@
+/* 筛查页 */
+.info-card { background: #fff; border-radius: 20rpx; padding: 32rpx; margin-bottom: 32rpx; box-shadow: 0 4rpx 16rpx rgba(107,29,94,0.06); }
+.info-title { font-size: 32rpx; font-weight: 600; margin-bottom: 20rpx; }
+.info-list { display: flex; flex-direction: column; gap: 16rpx; font-size: 28rpx; color: var(--text-secondary); line-height: 1.6; }
+.bold { font-weight: 600; color: var(--primary); }
+
+.picker-display { line-height: 88rpx; color: var(--text-primary); }
+.picker-display.disabled { color: var(--text-hint); }
+
+/* 进度条 */
+.progress-bar-container { display: flex; align-items: center; gap: 20rpx; margin-bottom: 24rpx; }
+.progress-bar { flex: 1; height: 16rpx; background: #ECECEC; border-radius: 8rpx; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transition: width 0.3s; }
+.progress-text { font-size: 26rpx; color: var(--text-secondary); min-width: 80rpx; text-align: right; }
+
+/* 视频 */
+.video-container { background: #000; border-radius: 20rpx; overflow: hidden; margin-bottom: 24rpx; }
+.screening-video { width: 100%; height: 380rpx; }
+.video-tip { text-align: center; color: #fff; font-size: 24rpx; padding: 12rpx; background: rgba(0,0,0,0.3); }
+
+/* 题目 */
+.question-card { background: #fff; border-radius: 20rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(107,29,94,0.06); }
+.question-number { font-size: 26rpx; color: var(--primary); font-weight: 600; margin-bottom: 16rpx; }
+.question-text { font-size: 34rpx; color: var(--text-primary); line-height: 1.6; margin-bottom: 32rpx; }
+.question-options { display: flex; flex-direction: column; gap: 20rpx; }
+.question-option {
+  display: flex; align-items: center; gap: 20rpx;
+  padding: 28rpx 24rpx; background: #f7f7f7; border-radius: 16rpx;
+  border: 2rpx solid transparent; font-size: 30rpx;
+}
+.question-option.selected { background: var(--primary-lighter); border-color: var(--primary); color: var(--primary); }
+.option-dot { width: 44rpx; height: 44rpx; line-height: 44rpx; text-align: center; border-radius: 50%; border: 2rpx solid #ddd; font-size: 28rpx; flex-shrink: 0; }
+.question-option.selected .option-dot { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.question-nav { display: flex; gap: 20rpx; }
+.question-nav .btn { flex: 1; }

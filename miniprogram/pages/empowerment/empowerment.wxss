@@ -1,0 +1,7 @@
+/* 赋能页 */
+.empower-grid { display: flex; flex-direction: column; gap: 20rpx; }
+.empower-card { display: flex; align-items: center; gap: 24rpx; background: #fff; border-radius: 20rpx; padding: 32rpx; box-shadow: 0 4rpx 16rpx rgba(107,29,94,0.06); }
+.empower-icon { font-size: 56rpx; }
+.empower-content { flex: 1; }
+.empower-title { font-size: 32rpx; font-weight: 600; margin-bottom: 8rpx; }
+.empower-desc { font-size: 26rpx; color: var(--text-secondary); line-height: 1.5; }

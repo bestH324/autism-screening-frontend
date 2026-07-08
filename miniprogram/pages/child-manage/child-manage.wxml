@@ -1,0 +1,64 @@
+<!-- 儿童管理页 -->
+<view class="page-wrap">
+  <!-- 儿童列表 -->
+  <view class="children-list" wx:if="{{children.length > 0}}">
+    <view class="child-card" wx:for="{{children}}" wx:key="id" bindtap="selectForScreening" data-id="{{item.id}}">
+      <view class="child-avatar">{{item.avatar || '👶'}}</view>
+      <view class="child-info">
+        <text class="child-name">{{item.name}}</text>
+        <text class="child-detail">{{item.gender === 'male' ? '👦' : '👧'}} {{item.ageText}} · {{item.birthText}}</text>
+      </view>
+      <view class="child-actions" catchtap="noop">
+        <text class="child-op" catchtap="editChild" data-id="{{item.id}}">✏️</text>
+        <text class="child-op" catchtap="deleteChild" data-id="{{item.id}}">🗑️</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{children.length === 0}}">
+    <text class="empty-icon">👶</text>
+    <text>还没有添加宝宝信息</text>
+    <text class="text-hint">点击下方按钮添加宝宝，开始筛查</text>
+  </view>
+
+  <!-- 添加按钮 -->
+  <button class="btn btn-outline btn-block" bindtap="showAddForm" wx:if="{{!formVisible}}">+ 添加宝宝</button>
+
+  <!-- 添加/编辑表单 -->
+  <view class="card form-card" wx:if="{{formVisible}}">
+    <view class="card-title">{{editingId ? '编辑宝宝信息' : '添加宝宝信息'}}</view>
+
+    <view class="form-group">
+      <text class="form-label">宝宝昵称</text>
+      <input class="form-input" placeholder="请输入宝宝昵称" value="{{form.name}}" bindinput="onNameInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">性别</text>
+      <view class="gender-selector">
+        <button class="gender-btn {{form.gender === 'male' ? 'selected' : ''}}" bindtap="selectGender" data-gender="male">👦 男宝</button>
+        <button class="gender-btn {{form.gender === 'female' ? 'selected' : ''}}" bindtap="selectGender" data-gender="female">👧 女宝</button>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">出生日期</text>
+      <picker mode="date" value="{{form.birthDate}}" start="{{minDate}}" end="{{today}}" bindchange="onBirthChange">
+        <view class="form-input picker-display">{{form.birthDate || '请选择出生日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">头像</text>
+      <view class="avatar-options">
+        <text class="avatar-option {{form.avatar === item ? 'selected' : ''}}" wx:for="{{avatarList}}" wx:key="*this" bindtap="selectAvatar" data-avatar="{{item}}">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="form-buttons">
+      <button class="btn btn-outline" bindtap="hideForm">取消</button>
+      <button class="btn btn-primary" bindtap="saveChild" loading="{{saving}}">保存</button>
+    </view>
+  </view>
+</view>

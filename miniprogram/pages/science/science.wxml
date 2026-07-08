@@ -1,0 +1,22 @@
+<!-- 科普知识页 -->
+<view class="page-wrap">
+  <view class="tabs">
+    <view class="tab {{category === 'all' ? 'active' : ''}}" bindtap="switchTab" data-cat="all">全部</view>
+    <view class="tab {{category === 'knowledge' ? 'active' : ''}}" bindtap="switchTab" data-cat="knowledge">认识孤独症</view>
+    <view class="tab {{category === 'early' ? 'active' : ''}}" bindtap="switchTab" data-cat="early">早期信号</view>
+    <view class="tab {{category === 'intervene' ? 'active' : ''}}" bindtap="switchTab" data-cat="intervene">干预方法</view>
+  </view>
+
+  <view class="article-list" wx:if="{{list.length > 0}}">
+    <view class="article-card" wx:for="{{list}}" wx:key="id" bindtap="viewArticle" data-id="{{item.id}}">
+      <view class="article-title">{{item.title}}</view>
+      <view class="article-summary">{{item.summary}}</view>
+      <view class="article-meta">{{item.date}} · {{item.author}}</view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{list.length === 0 && !loading}}">
+    <text class="empty-icon">📚</text>
+    <text>暂无文章</text>
+  </view>
+</view>

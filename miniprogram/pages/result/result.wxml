@@ -1,0 +1,45 @@
+<!-- 筛查结果页 -->
+<view class="page-wrap" wx:if="{{report}}">
+  <!-- 风险等级头部 -->
+  <view class="result-header risk-{{report.riskLevel}}">
+    <text class="result-risk-icon">{{riskIcon}}</text>
+    <text class="result-risk-level">{{report.riskText}}</text>
+    <text class="result-score">筛查得分：{{report.totalScore}} / {{report.maxScore}} 分</text>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="card">
+    <view class="card-title">📋 基本信息</view>
+    <view class="info-row"><text>筛查对象：</text><text>{{report.child.avatar || '👶'}} {{report.child.name}}</text></view>
+    <view class="info-row"><text>月龄：</text><text>{{childAgeText}}</text></view>
+    <view class="info-row"><text>筛查时间：</text><text>{{createTimeText}}</text></view>
+    <view class="info-row"><text>答题数量：</text><text>{{report.answers.length}} 题</text></view>
+  </view>
+
+  <!-- 专业建议 -->
+  <view class="card">
+    <view class="card-title">💡 专业建议</view>
+    <view class="rec-list">
+      <view class="rec-item" wx:for="{{report.recommendations}}" wx:key="index">• {{item}}</view>
+    </view>
+  </view>
+
+  <!-- 重要提醒 -->
+  <view class="card alert-card">
+    <view class="card-title">⚠️ 重要提醒</view>
+    <text class="alert-text">本筛查结果仅为早期参考，不能替代专业医疗诊断。如对孩子的发育有任何疑虑，请务必咨询专业医生或前往正规医疗机构就诊。</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <button class="btn btn-primary btn-block" bindtap="goHistory">查看历史记录</button>
+  <button class="btn btn-outline btn-block mt-10" bindtap="shareResult">分享报告</button>
+  <button class="btn btn-outline btn-block mt-10" bindtap="sendResultEmail">发送到邮箱</button>
+  <button class="btn btn-outline btn-block mt-10" bindtap="goReferral">查看转诊机构</button>
+</view>
+
+<view class="page-wrap" wx:if="{{!report && !loading}}">
+  <view class="empty-state">
+    <text class="empty-icon">📄</text>
+    <text>未找到报告</text>
+  </view>
+</view>

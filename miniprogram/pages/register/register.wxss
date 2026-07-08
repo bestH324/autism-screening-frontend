@@ -1,0 +1,6 @@
+/* 注册页 */
+.agreement { display: flex; align-items: flex-start; flex-wrap: wrap; margin: 24rpx 0 40rpx; font-size: 26rpx; color: var(--text-secondary); }
+.agreement checkbox { transform: scale(0.8); margin-right: 8rpx; }
+.agree-text { line-height: 48rpx; }
+.link { color: var(--primary); line-height: 48rpx; }
+.form-bottom { text-align: center; margin-top: 48rpx; font-size: 28rpx; color: var(--text-secondary); }

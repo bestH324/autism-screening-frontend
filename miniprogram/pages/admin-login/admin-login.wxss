@@ -1,0 +1,2 @@
+/* 管理员登录页 */
+.admin-notice { background: var(--primary-lighter); color: var(--primary-dark); padding: 24rpx; border-radius: 16rpx; font-size: 28rpx; text-align: center; margin-bottom: 40rpx; }

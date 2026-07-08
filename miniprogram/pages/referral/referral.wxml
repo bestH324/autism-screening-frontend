@@ -1,0 +1,22 @@
+<!-- 转诊服务页 -->
+<view class="page-wrap">
+  <view class="intro">
+    <text>以下为全国范围内具备孤独症诊疗能力的专业机构，按地区分类整理。如需进一步帮助，请联系客服。</text>
+  </view>
+
+  <view class="region-group" wx:for="{{regions}}" wx:key="*this" wx:for-item="region">
+    <view class="region-title">📍 {{region}}</view>
+    <view class="inst-card" wx:for="{{instMap[region]}}" wx:key="id" wx:for-item="inst">
+      <view class="inst-name">{{inst.name}}</view>
+      <view class="inst-tag">{{inst.department}}</view>
+      <view class="inst-row">📍 {{inst.address}}</view>
+      <view class="inst-row inst-phone" bindtap="callPhone" data-phone="{{inst.phone}}">📞 {{inst.phone}}</view>
+      <view class="inst-desc">{{inst.description}}</view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{regions.length === 0 && !loading}}">
+    <text class="empty-icon">🏥</text>
+    <text>暂无机构数据</text>
+  </view>
+</view>

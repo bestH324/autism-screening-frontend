@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/science/science",
+    "pages/screening/screening",
+    "pages/referral/referral",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/child-manage/child-manage",
+    "pages/result/result",
+    "pages/history/history",
+    "pages/empowerment/empowerment",
+    "pages/about/about",
+    "pages/admin-login/admin-login",
+    "pages/admin-dashboard/admin-dashboard"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#6B1D5E",
+    "navigationBarTitleText": "星语 · 孤独症早期支持平台",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F0F5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#7F8C8D",
+    "selectedColor": "#6B1D5E",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/science/science",
+        "text": "科普"
+      },
+      {
+        "pagePath": "pages/screening/screening",
+        "text": "筛查"
+      },
+      {
+        "pagePath": "pages/referral/referral",
+        "text": "转诊"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

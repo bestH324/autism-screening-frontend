@@ -1,0 +1,15 @@
+<!-- 管理员登录页 -->
+<view class="page-wrap">
+  <view class="admin-notice">🔐 此页面仅限平台管理人员使用</view>
+
+  <view class="form-group">
+    <text class="form-label">管理员账号</text>
+    <input class="form-input" placeholder="请输入管理员账号" value="{{username}}" bindinput="onUserInput" />
+  </view>
+  <view class="form-group">
+    <text class="form-label">密码</text>
+    <input class="form-input" type="password" placeholder="请输入密码" value="{{password}}" bindinput="onPwdInput" />
+  </view>
+
+  <button class="btn btn-primary btn-block" bindtap="doLogin" loading="{{loading}}">管理员登录</button>
+</view>

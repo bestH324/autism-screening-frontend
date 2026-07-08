@@ -1,0 +1,9 @@
+/* 关于页 */
+.about { display: flex; flex-direction: column; align-items: center; }
+.about-logo { font-size: 120rpx; margin: 40rpx 0 16rpx; }
+.about-name { font-size: 48rpx; font-weight: 700; color: var(--primary); }
+.about-version { font-size: 26rpx; color: var(--text-hint); margin: 12rpx 0 32rpx; }
+.about-desc { font-size: 28rpx; color: var(--text-secondary); line-height: 1.7; text-align: center; margin-bottom: 32rpx; padding: 0 24rpx; }
+.about .card { width: 100%; }
+.about-text { font-size: 28rpx; color: var(--text-secondary); line-height: 1.7; display: block; margin-bottom: 12rpx; }
+.about-copyright { font-size: 24rpx; color: var(--text-hint); margin-top: 40rpx; }

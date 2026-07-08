@@ -1,0 +1,16 @@
+<!-- 赋能支持页 -->
+<view class="page-wrap">
+  <view class="empower-grid" wx:if="{{list.length > 0}}">
+    <view class="empower-card" wx:for="{{list}}" wx:key="id" bindtap="tapItem" data-title="{{item.title}}">
+      <text class="empower-icon">{{item.icon}}</text>
+      <view class="empower-content">
+        <view class="empower-title">{{item.title}}</view>
+        <view class="empower-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="empty-state" wx:if="{{list.length === 0 && !loading}}">
+    <text class="empty-icon">💪</text>
+    <text>暂无资源</text>
+  </view>
+</view>

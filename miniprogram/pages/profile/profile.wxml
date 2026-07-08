@@ -1,0 +1,36 @@
+<!-- 个人中心页 -->
+<view class="page-wrap">
+  <view class="profile-header-card" bindtap="tapHeader">
+    <view class="profile-avatar">{{isLoggedIn ? '👤' : '👤'}}</view>
+    <view class="profile-info">
+      <view class="profile-name">{{isLoggedIn ? name : '未登录'}}</view>
+      <view class="profile-phone">{{isLoggedIn ? phone : '点击登录'}}</view>
+    </view>
+    <text class="profile-arrow">›</text>
+  </view>
+
+  <view class="menu">
+    <view class="menu-item" bindtap="goChildManage">
+      <text class="menu-icon">👶</text>
+      <text class="menu-text">宝宝管理</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goHistory">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">筛查记录</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goAbout">
+      <text class="menu-icon">ℹ️</text>
+      <text class="menu-text">关于我们</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="showPrivacy">
+      <text class="menu-icon">🔒</text>
+      <text class="menu-text">隐私政策</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <button class="btn btn-outline btn-block mt-20" wx:if="{{isLoggedIn}}" bindtap="doLogout">退出登录</button>
+</view>

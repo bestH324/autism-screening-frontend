@@ -1,0 +1,20 @@
+/* 结果页 */
+.result-header {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 48rpx 32rpx; border-radius: 24rpx; margin-bottom: 24rpx; color: #fff;
+}
+.result-header.risk-low { background: linear-gradient(135deg, #27AE60, #2ECC71); }
+.result-header.risk-medium { background: linear-gradient(135deg, #E67E22, #F39C12); }
+.result-header.risk-high { background: linear-gradient(135deg, #C0392B, #E74C3C); }
+.result-risk-icon { font-size: 80rpx; }
+.result-risk-level { font-size: 44rpx; font-weight: 700; margin-top: 12rpx; }
+.result-score { font-size: 28rpx; margin-top: 12rpx; opacity: 0.95; }
+
+.info-row { display: flex; font-size: 28rpx; color: var(--text-secondary); line-height: 2; }
+.info-row text:first-child { color: var(--text-hint); min-width: 160rpx; }
+
+.rec-list { display: flex; flex-direction: column; gap: 16rpx; }
+.rec-item { font-size: 28rpx; color: var(--text-primary); line-height: 1.6; }
+
+.alert-card { background: var(--primary-lighter); }
+.alert-text { font-size: 26rpx; color: var(--primary-dark); line-height: 1.7; }
