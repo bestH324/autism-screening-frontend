@@ -1,0 +1,16 @@
+# Maven
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 数据与运行时文件
+data/
+*.db
+*.db-journal
+logs/
+
+# 视频/静态资源（按需保留）
+# data/videos/

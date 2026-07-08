@@ -1,0 +1,22 @@
+# === Maven / Java ===
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# === IDE ===
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# === OS ===
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# === Environment ===
+.env
+.env.local
